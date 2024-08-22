@@ -1,0 +1,92 @@
+.td > p,
+.td > a > p
+ {
+  max-width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 5px;
+}
+.td {
+  max-width: 10vw !important;
+  /* padding: 5px!important; */
+}
+.tableCont {
+  min-width: 700px !important;
+}
+.td > label {
+  display: none;
+}
+th{
+  padding: 15px 16px!important;
+}
+.docContainer{
+  display: flex;
+  width: 100%;
+  border:0.1px solid rgba(0, 0, 0, 0.163);
+}
+.downloadCont{
+display: flex;
+justify-content: flex-end;
+margin-bottom: 20px;
+}
+.filterSection{
+  width: 20%;
+  border-right:0.1px solid rgba(0, 0, 0, 0.163);
+  padding:3px;
+}
+.filterSection>h2{
+background-color: grey;
+color: white;
+margin: 0px;
+padding: 14px 5px;
+font-size: 17px;
+}
+.dataSection{
+  padding: 3px;
+
+  width: 80%;
+}
+@media screen and (max-width: 550px) {
+  .headerRow {
+    display: none !important;
+  }
+  .docContainer{
+   flex-direction: column;
+  }
+  .filterSection{
+    width: 100%;
+  }
+  .dataSection{
+    width: 100%;
+  }
+  .td > a 
+  {
+   max-width: 100%;
+   overflow-x: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   margin: 5px;
+ }
+  .tableBodyRow {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .td {
+    max-width: calc(100vw - 52px) !important;
+    display: flex !important;
+    align-items: center;
+  }
+  .tableCont {
+    min-width: 100% !important;
+  }
+  .td > label {
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+}
+

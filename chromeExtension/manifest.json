@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Email and Search Title Extractor",
+  "version": "1.0",
+  "description": "A Chrome extension to extract emails from the active tab and titles of Google search results tabs.",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage",
+    "background"
+  ]
+}

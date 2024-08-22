@@ -1,0 +1,48 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    container_name: web-scrapping-mongo
+    ports:
+      - '27018:27017'
+    environment:
+      MONGO_INITDB_DATABASE: webscraping
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ARGS: --auth
+    volumes:
+      - ./web-scrapping-mongo:/data/db
+    networks:
+      - web-scrapping
+    restart: unless-stopped
+  web-scrapping-backend:
+    image: webscrapping/web-scrapping-backend
+    container_name: web-scrapping-backend
+    ports:
+      - '8000:8080'
+    environment:
+      - MONGODB_URL=mongodb://root:root@web-scrapping-mongo:27017/webscraping?authSource=admin
+      - MONGODB_PASSWORD=root
+      - PORT=8080
+    depends_on:
+      - mongo
+    networks:
+      - web-scrapping
+    restart: unless-stopped  
+  web-scrapping-frontend:
+    image: webscrapping/web-scrapping-frontend
+    container_name: web-scrapping-frontend
+    ports:
+      - '4000:3000'
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - REACT_APP_SOCKET_URL=ws://localhost:8000
+    networks:
+      - web-scrapping
+    restart: unless-stopped
+networks:
+  web-scrapping:
+      name: web-scrapping
+      driver: bridge
+
+

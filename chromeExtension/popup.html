@@ -1,0 +1,143 @@
+<!-- popup.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extracted Data</title>
+    <style>
+      #download-btn,
+      #save-btn,
+      #clear-btn {
+        margin-top: 10px;
+        padding: 8px 16px;
+        border-radius: 5px;
+        background-color: rgb(30, 140, 237);
+        border: none;
+        color: white;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+      }
+
+      #download-btn:hover,
+      #save-btn:hover,
+      #clear-btn:hover {
+        opacity: 0.8;
+      }
+
+      .actionCont {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-color: white;
+        padding-bottom: 10px;
+      }
+
+      #clear-btn {
+        display: none;
+      }
+
+      body,
+      html {
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+
+      h2 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      #data-table {
+        margin-top: 20px;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        position: relative;
+        margin-bottom: 70px;
+      }
+
+      #data-table th,
+      #data-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #data-table th {
+        color: #f2f2f2;
+        background-color: black;
+      }
+
+      #data-table tbody tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      #count {
+        font-size: 20px;
+        color: #888;
+      }
+      #modal {
+        min-width: 400px;
+      }
+
+      @media only screen and (max-width: 600px) {
+        #data-table {
+          font-size: 12px;
+        }
+      }
+
+      .thead > tr > th,
+      #data-body > tr > td {
+        padding: 12px;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body id="modal">
+    <h2>Extracted Data <span id="count">(0)</span></h2>
+    <div style="display: flex; flex-direction: column; gap: 10px">
+      <!-- <label for="urlInput">Website URL:</label> -->
+      <!-- <input type="url" id="urlInput" placeholder="Enter website URL" /> -->
+      <label for="keywordsInput">Search Keywords (comma-separated):</label>
+      <textarea
+        rows="4"
+        type="text"
+        id="keywordsInput"
+        placeholder="Enter search keywords"
+      ></textarea>
+      <button id="start">Start Processing</button>
+    </div>
+
+    <table id="data-table" border="1">
+      <thead class="thead">
+        <tr>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Website</th>
+        </tr>
+      </thead>
+      <tbody id="data-body"></tbody>
+    </table>
+    <div class="actionCont">
+      <button id="download-btn">Download</button>
+      <button id="save-btn">Save List</button>
+      <button id="clear-btn">Clear List</button>
+      <!-- <button id="start">Start Scrolling</button> -->
+      <button id="startFetching">Start Fetching</button>
+      <button id="stop">Stop Scrolling</button>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

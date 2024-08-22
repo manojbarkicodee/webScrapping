@@ -1,0 +1,114 @@
+.td > p,
+.td > a > p
+ {
+  max-width: 100%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 5px;
+}
+.td {
+  max-width: 10vw !important;
+  /* padding: 5px!important; */
+}
+.tableCont {
+  min-width: 750px !important;
+}
+.td > label {
+  display: none;
+}
+.actionsTd{
+  max-width:200px!important;
+ 
+}
+@media screen and (max-width: 550px) {
+  .headerRow {
+    display: none !important;
+  }
+  .td > a 
+  {
+   max-width: 100%;
+   overflow-x: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   margin: 5px;
+ }
+  .tableBodyRow {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .td {
+    max-width: calc(100vw - 52px) !important;
+    display: flex !important;
+    align-items: center;
+  }
+
+ 
+  .tableCont {
+    min-width: 100% !important;
+  }
+  .td > label {
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+}
+
+.loaderCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 40px;
+  height: 20px;
+  --c: no-repeat radial-gradient(farthest-side, #000 93%, #0000);
+  background: var(--c) 0 0, var(--c) 50% 0, var(--c) 100% 0;
+  background-size: 8px 8px;
+  position: relative;
+  animation: l4-0 1s linear infinite alternate;
+}
+.loader:before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background: #000;
+  left: 0;
+  top: 0;
+  animation: l4-1 1s linear infinite alternate,
+    l4-2 0.5s cubic-bezier(0, 200, 0.8, 200) infinite;
+}
+@keyframes l4-0 {
+  0% {
+    background-position: 0 100%, 50% 0, 100% 0;
+  }
+  8%,
+  42% {
+    background-position: 0 0, 50% 0, 100% 0;
+  }
+  50% {
+    background-position: 0 0, 50% 100%, 100% 0;
+  }
+  58%,
+  92% {
+    background-position: 0 0, 50% 0, 100% 0;
+  }
+  100% {
+    background-position: 0 0, 50% 0, 100% 100%;
+  }
+}
+@keyframes l4-1 {
+  100% {
+    left: calc(100% - 8px);
+  }
+}
+@keyframes l4-2 {
+  100% {
+    top: -0.1px;
+  }
+}
